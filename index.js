@@ -78,7 +78,7 @@ Parameters:
     let winners = cbWinners;
     let years = cbYears;
     let allWinners = []
-    winners.forEach(function(item, index) {
+    winners.forEach(function(item, index) { //years[index] At each index for winners add a year
         allWinners.push(`In ${years[index]}, ${item} won the world cup!`);
     });
     return allWinners;
@@ -91,13 +91,20 @@ console.log(getWinnersByYear(getWinners(getFinal(fifaData)),getYears(getFinal(fi
 
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(data) {
+    let homeSum = data.reduce(function(accumulator, item){
+        return accumulator + item["Home Team Goals"];
+    },0);
+    let awaySum = data.reduce(function(accumulator, item){
+        return accumulator + item["Away Team Goals"];
+    },0);
+    let homeAverage = homeSum / data.length;
+    let awayAverage = awaySum / data.length;
 
-    /* code here */
-
+    return `The average number of home team goals is: ${homeAverage}. The average number of away team goals is: ${awayAverage}`;
 };
 
-getAverageGoals();
+console.log(getAverageGoals(getFinal(fifaData)));
 
 /// STRETCH 🥅 //
 
