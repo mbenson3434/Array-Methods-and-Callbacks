@@ -12,6 +12,27 @@ console.log('its working');
 (d) Away Team goals for 2014 world cup final
 (e) Winner of 2014 world cup final */
 
+function printData(callBack1, year, info) {
+    callBack1.forEach(function(item){
+        if(item.Year === year) {
+            console.log(item[info]);
+        }
+    });
+    };
+  printData(getFinal(fifaData), 2014,"Home Team Name"); //a
+  printData(getFinal(fifaData), 2014,"Away Team Name"); //b
+  printData(getFinal(fifaData), 2014,"Home Team Goals"); //c
+  printData(getFinal(fifaData), 2014,"Away Team Name"); //d
+
+
+  function cupWinner(callBack1, year, info) {
+    callBack1.forEach(function(item){
+        if(item.Year === year) {
+            console.log(item[info]);
+        }
+    });
+};
+cupWinner(getFinal(fifaData), 2014, "Home Team Name"); //e
 //How to console.log
 // let bigPops = cityData.filter(function(item){
 //       return item.population > 500000;
